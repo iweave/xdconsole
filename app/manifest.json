@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+
+  "name": "xdconsole",
+  "description": "xdmachine console interface",
+  "version": "0.0.0.1",
+
+ "background": {
+    "scripts": ["jquery.min.js","crawler_loader.js","background.js"],
+    "persistent": true
+  },
+
+  "permissions": [
+    "http://*/*",
+    "https://*/*",
+    "storage",
+    "notifications",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "xdconsole",
+    "default_popup": "popup.html"
+  },
+  "content_security_policy": "script-src 'self' https://s3.amazonaws.com; object-src 'self'"
+}
