@@ -33,5 +33,5 @@
     "default_title": "xdconsole",
     "default_popup": "popup.html"
   },
-  "content_security_policy": "script-src 'self' https://s3.amazonaws.com; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://s3.amazonaws.com; object-src 'self'"
 }

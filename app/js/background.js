@@ -1,5 +1,8 @@
+// default states
+var sendAnalytics = true;
 var pluginStatus = 'loading';
 
+// Communicate with browser badge/icon
 function updatePluginStatus(msg) {
   pluginStatus=msg;
   var views = chrome.extension.getViews({type: "popup"});
@@ -39,3 +42,15 @@ chrome.browserAction.setBadgeText({text: ">"});
 // default badge empty blue
 chrome.browserAction.setBadgeBackgroundColor({ color:[ 0,204,255,255]});
 chrome.browserAction.setBadgeText({text: " "});
+
+if (sendAnalytics==true) {
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-50955413-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = 'https://ssl.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+}
