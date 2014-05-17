@@ -2,12 +2,19 @@
   "manifest_version": 2,
 
   "name": "xdconsole",
+  "short_name": "xdconsole",
   "description": "xdmachine console interface",
-  "version": "0.0.0.1",
+  "version": "0.0.0.2",
 
- "background": {
-    "scripts": ["jquery.min.js","crawler_loader.js","background.js"],
+  "background": {
+    "scripts": ["js/jquery.min.js","js/crawler_loader.js","js/background.js"],
     "persistent": true
+  },
+
+  "icons": {
+    "16":  "images/xd7icon_16.png",
+    "48":  "images/xd7icon_48.png",
+    "128": "images/xd7icon_128.png"
   },
 
   "permissions": [
@@ -19,7 +26,10 @@
     "webRequestBlocking"
   ],
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": {
+      "19": "images/xd7icon_19.png",
+      "38": "images/xd7icon_38.png" 
+    }, 
     "default_title": "xdconsole",
     "default_popup": "popup.html"
   },
