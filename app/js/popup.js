@@ -27,6 +27,10 @@ _gaq.push(['_trackPageview']);
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 
+function trackButtonClick(e) {
+    _gaq.push(['_trackEvent', e.target.id, 'clicked']);
+  };
+
 document.addEventListener('DOMContentLoaded', function() {
 
   loadStatus();
