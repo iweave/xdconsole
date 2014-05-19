@@ -1,3 +1,22 @@
+var moduleStatus = "";
+
+function loadStatus() {
+  var datafinitiStatus = localStorage['datafinitiStatus'];
+
+  if (datafinitiStatus == undefined) {
+    datafinitiStatus = defaultStatus;
+  }
+
+  var moduleStatus = document.getElementById("moduleStatus");
+  moduleStatus.innerText = datafinitiStatus;
+}
+
+function saveStatus() {
+  var moduleStatus = document.getElementById("moduleStatus");
+  localStorage["datafinitiStatus"] = moduleStatus.value;
+}
+
+
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-50955413-1']);
 _gaq.push(['_trackPageview']);
