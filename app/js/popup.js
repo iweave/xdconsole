@@ -10,12 +10,19 @@ _gaq.push(['_trackPageview']);
 
 document.addEventListener('DOMContentLoaded', function() {
 
-  document.querySelector("#startPlugin").addEventListener("click", function() {
-    chrome.extension.getBackgroundPage().start_plugin();
+  loadStatus();
+
+  var buttons = document.querySelectorAll('button');
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', trackButtonClick);
+  }
+
+  document.querySelector("#startModule").addEventListener("click", function() {
+    chrome.extension.getBackgroundPage().start_module();
   });
 
-  document.querySelector("#stopPlugin").addEventListener("click", function() {
-    chrome.extension.getBackgroundPage().stop_plugin();
+  document.querySelector("#stopModule").addEventListener("click", function() {
+    chrome.extension.getBackgroundPage().stop_module();
   });
 
 });

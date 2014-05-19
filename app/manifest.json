@@ -4,7 +4,8 @@
   "name": "xdconsole",
   "short_name": "xdconsole",
   "description": "xdmachine console interface",
-  "version": "0.0.0.2",
+  "version": "0.0.0.4",
+  "options_page": "options.html",
 
   "background": {
     "scripts": ["js/jquery.min.js","js/crawler_loader.js","js/background.js"],
@@ -25,6 +26,7 @@
     "webRequest",
     "webRequestBlocking"
   ],
+
   "browser_action": {
     "default_icon": {
       "19": "images/xd7icon_19.png",
@@ -33,5 +35,6 @@
     "default_title": "xdconsole",
     "default_popup": "popup.html"
   },
+
   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://s3.amazonaws.com; object-src 'self'"
 }
