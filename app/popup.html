@@ -1,8 +1,31 @@
 <!doctype html>
 <html>
 <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="copyright" content="Garth Johnson, 2014" />
 	<style type="text/css">
-	body { width: 400px; height: 400px; overflow-x: hidden;}
+	  body { width: 400px; height: 100%; 
+                 margin: 10px; background: rgb(50,50,50);
+                 color: rgb(255,255,255);
+                 font: 10px/13px 'Lucida Sans',sans-serif;
+          }
+          div.box{ float: left; position: relative;
+                   width: 25%; padding-bottom:20%; 
+          }
+          div.boxInner{overflow:hidden; background: rgb(0,50,255);
+                   position: absolute;
+                   left: 2px; right:2px; top:2px; bottom:2px;
+                   }
+          div.boxInner label{
+              width:100%; display:block; float:left; text-align:center;
+              overflow: hidden;
+              bottom: 0; left: 0; right: 0;
+              margin-top:30%;
+          }
+          div.boxInner .dataBox{
+              margin-left:1px; float:left; 
+              width: 100%; text-align: center;
+          }
 	</style>
         <script src="js/jquery.min.js"></script>
         <script src="js/popup.js"></script>
@@ -12,23 +35,18 @@
   <div id='consoleTitle'>
     xdconsole - datafiniti module
   </div>
-  <button id="startModule" title="startModule">Start Crawler</button>
-  <button id="stopModule" title="stopModule">Stop Crawler</button>
-  <div id='moduleStatus'></div>
-  <div id='completedPackets'>completedJobs:</div>
-  <div id='acceptedPackets'>acceptedPackets:</div>
-  <div id='rejectedPackets'>rejectedPackets:</div>
-  <div id='droppedPackets'>droppedPackets:</div>
-  <div id='crawledURLS'>CrawledURLs:</div>
-  <div id='bytesUsed'>bytesUsed</div>
-  <div id='loadedApps'>loadedApps:</div>
-  <div id='errors'>errors:</div>
-  <div id='secondsCrawling'>secondsCrawling</div>
-  <div id='secondsIdle'>secondsIdle</div>
-</div>
-<hr>
-<div id='launcher'>
-  <a href="/options.html" target="_newtab">Options</a>
+  <div id="xdcontrols">
+    <button id="startModule" title="startModule">Start Crawler</button>
+    <button id="stopModule" title="stopModule">Stop Crawler</button>
+    <div id='optionsLauncher'>
+      <a href="/options.html" target="_newtab">Options</a>
+    </div>
+  </div>
+  <div id="xdstatus">
+    <div id='moduleStatus'>offline</div>
+  </div>
+  <div id="xdstats" class='wrap'>
+  </div>
 </div>
 </body>
 </html>

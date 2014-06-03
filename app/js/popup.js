@@ -1,19 +1,20 @@
-var moduleStatus = "";
+var moduleStats = "";
 
-function loadStatus() {
-  var datafinitiStatus = localStorage['datafinitiStatus'];
+function loadCachedStats() {
+  var datafinitiStats = localStorage['datafinitiStats'];
 
-  if (datafinitiStatus == undefined) {
-    datafinitiStatus = defaultStatus;
+  // nothing stored? default to empty
+  if (datafinitiStats == undefined) {
+    datafinitiStats = '';
   }
 
-  var moduleStatus = document.getElementById("moduleStatus");
-  moduleStatus.innerText = datafinitiStatus;
+  var moduleStats = document.getElementById("xdstats");
+  moduleStats.innerHTML = datafinitiStats;
 }
 
-function saveStatus() {
-  var moduleStatus = document.getElementById("moduleStatus");
-  localStorage["datafinitiStatus"] = moduleStatus.value;
+function saveCachedStats() {
+  var moduleStats = document.getElementById("xdstats");
+  localStorage["datafinitiStats"] = moduleStats.innerHTML;
 }
 
 
@@ -33,7 +34,8 @@ function trackButtonClick(e) {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-  loadStatus();
+  loadCachedStats();
+  chrome.extension.getBackgroundPage().renderPopupStats();
 
   var buttons = document.querySelectorAll('button');
   for (var i = 0; i < buttons.length; i++) {
