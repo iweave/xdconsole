@@ -4,7 +4,7 @@
   "name": "xdconsole",
   "short_name": "xdconsole",
   "description": "xdmachine console interface",
-  "version": "0.0.0.6",
+  "version": "0.0.0.7",
   "options_page": "options.html",
 
   "background": {

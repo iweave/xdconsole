@@ -190,8 +190,8 @@ updateModuleStatus('stopping');
 //clearInterval(getCrawlerTimeout);
 //checkCrawlerUpdateInterval=null;
 //getCrawlerTimeout=null;
+updateModuleStatus('stopping');
 crawler.toggle_active(false);
-updateModuleStatus('stopped');
 chrome.browserAction.setBadgeBackgroundColor({ color:[ 255,255,0,255]});
 chrome.browserAction.setBadgeText({text: ">"});
 }
