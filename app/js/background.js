@@ -128,7 +128,7 @@ function updateModuleStats(targets) {
 //          console.log('no target ' + key + ' found, seeking xdstats');
           divData = document.createElement('div');
           divData.id = key;
-          divData.className='dataBox';
+          divData.className='dataBox status-update';
           divData.innerText = targets[key];
          
           target = views[0].document.getElementById('xdstats');                     
@@ -161,9 +161,11 @@ function updateModuleStats(targets) {
           // set stats data
 //          console.log("updating existing target "+key);
           target.innerText = targets[key];
+          target.classList.toggle('status-update')
       }
     } else {
-      console.log('no views');
+//      popup not open right now
+//      console.log('no views');
     }
     Stats['stats'][key] = targets[key];
     chrome.storage.local.set({'stats': Stats});
@@ -257,5 +259,6 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
     } else {
         Stats = stats.stats;
     }
+    Stats.stats.moduleStatus='stopped';
   });
 })();
