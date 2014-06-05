@@ -1,8 +1,11 @@
-// xdmachine plugin for datafiniti
+// xdmachine module for datafiniti
 
+// default settings
+// datafiniti endpoints
 var crawlerUrl = "https://s3.amazonaws.com/crawler.datafinitiapp.net/crawler.js"
 var updateUrl = "https://s3.amazonaws.com/crawler.datafinitiapp.net/version.html";
 
+// initial configuration
 var version = 0;
 var affiliate_id = "be13j0y0f8whg0wy9nvn9be1bfugtpvy"
 
@@ -26,15 +29,15 @@ function get_crawler() {
     // load the crawler
     $.getScript(crawlerUrl)
       .fail(function(jqxhr, settings, exception) {
-        updatePluginStatus('failLoad');
+        updateModuleStatus('failLoad');
         clearTimeout(getCrawlerTimeout);
         getCrawlerTimeout = setTimeout(get_crawler, getCrawlerRetryDelay);
     }).done(function() {
-        updatePluginStatus('running');
+        updateModuleStatus('running');
     });
   } catch(err) {
     // try again in 30 seconds
-    updatePluginStatus('errorLoad');
+    updateModuleStatus('errorLoad');
     console.log(err);
     clearTimeout(getCrawlerTimeout);
     getCrawlerTimeout = setTimeout(get_crawler, getCrawlerRetryDelay);
@@ -53,7 +56,7 @@ function check_crawler_update() {
       cache: false,
       success: function(msg) {
         if(parseInt(msg) > version) {
-          updatePluginStatus('upgrade');
+          updateModuleStatus('upgrade');
           console.log('new version ' + version + ' -> ' + msg);
           // get the new crawler
           crawler.stop_work();

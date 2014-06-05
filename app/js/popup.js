@@ -1,3 +1,22 @@
+var moduleStatus = "";
+
+function loadStatus() {
+  var datafinitiStatus = localStorage['datafinitiStatus'];
+
+  if (datafinitiStatus == undefined) {
+    datafinitiStatus = defaultStatus;
+  }
+
+  var moduleStatus = document.getElementById("moduleStatus");
+  moduleStatus.innerText = datafinitiStatus;
+}
+
+function saveStatus() {
+  var moduleStatus = document.getElementById("moduleStatus");
+  localStorage["datafinitiStatus"] = moduleStatus.value;
+}
+
+
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-50955413-1']);
 _gaq.push(['_trackPageview']);
@@ -8,14 +27,25 @@ _gaq.push(['_trackPageview']);
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 
+function trackButtonClick(e) {
+    _gaq.push(['_trackEvent', e.target.id, 'clicked']);
+  };
+
 document.addEventListener('DOMContentLoaded', function() {
 
-  document.querySelector("#startPlugin").addEventListener("click", function() {
-    chrome.extension.getBackgroundPage().start_plugin();
+  loadStatus();
+
+  var buttons = document.querySelectorAll('button');
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', trackButtonClick);
+  }
+
+  document.querySelector("#startModule").addEventListener("click", function() {
+    chrome.extension.getBackgroundPage().start_module();
   });
 
-  document.querySelector("#stopPlugin").addEventListener("click", function() {
-    chrome.extension.getBackgroundPage().stop_plugin();
+  document.querySelector("#stopModule").addEventListener("click", function() {
+    chrome.extension.getBackgroundPage().stop_module();
   });
 
 });

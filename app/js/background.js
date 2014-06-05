@@ -1,19 +1,19 @@
 // default states
 var sendAnalytics = true;
-var pluginStatus = 'loading';
+var moduleStatus = "";
 
 // Communicate with browser badge/icon
-function updatePluginStatus(msg) {
-  pluginStatus=msg;
+function updateModuleStatus(msg) {
+  moduleStatus=msg;
   var views = chrome.extension.getViews({type: "popup"});
   for (var i = 0; i < views.length; i++) {
-    views[i].document.getElementById('pluginStatus').innerText=pluginStatus;
+    views[i].document.getElementById('moduleStatus').innerText=moduleStatus;
   }
 }
 
-function start_plugin() {
-if (pluginStatus=='running'||crawler.getActive==true) {updatePluginStatus('running'); return true;};
-updatePluginStatus('starting');
+function start_module() {
+if (moduleStatus=='running'||crawler.getActive==true) {updateModuleStatus('running'); return true;};
+updateModuleStatus('starting');
 // check for update every update interval
 //checkCrawlerUpdateInterval = setInterval(check_crawler_update, updateInterval);
 //getCrawlerTimeout=crawlerTimeout || null;
@@ -25,21 +25,21 @@ chrome.browserAction.setBadgeBackgroundColor({ color:[ 0,255,0,255]});
 chrome.browserAction.setBadgeText({text: "="});
 }
 
-function stop_plugin() {
-updatePluginStatus('stopping');
+function stop_module() {
+updateModuleStatus('stopping');
 // Clear timers
 //clearInterval(checkCrawlerUpdateInterval);
 //clearInterval(getCrawlerTimeout);
 //checkCrawlerUpdateInterval=null;
 //getCrawlerTimeout=null;
 crawler.toggle_active(false);
-updatePluginStatus('stopped');
+updateModuleStatus('stopped');
 chrome.browserAction.setBadgeBackgroundColor({ color:[ 255,255,0,255]});
 chrome.browserAction.setBadgeText({text: ">"});
 }
 
 
-// default badge empty blue
+// default badge empty blue on startup
 chrome.browserAction.setBadgeBackgroundColor({ color:[ 0,204,255,255]});
 chrome.browserAction.setBadgeText({text: " "});
 
