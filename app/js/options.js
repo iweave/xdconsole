@@ -3,6 +3,7 @@ var Options = {
     options: {
         "autoStart": false,
         "lastState": false,
+        "labelStats": true,
         "updateTimeout": 1000*10, // 30 seconds
         "updateInterval": 1000*60*60, // 1 Hour
         "getCrawlerRetryDelay": 1000*30, // 30 seconds
@@ -21,6 +22,12 @@ var optionsTemplate = {
         name: "active",
         hoverText: "Restart Crawler if it is not running",
         description: "Keep Crawler Running",
+        type: "checkbox"
+
+    }, {
+        name: "labelStats",
+        hoverText: "Render labels for stats on popup page",
+        description: "Render popup labels",
         type: "checkbox"
 
     }, {
@@ -84,7 +91,7 @@ renderHTML = function(template, targets) {
                 if(Options[section][item.name] === true) option.checked = true;
                 option.addEventListener('change', checkboxChanged);
                 break;
-              case 'text':
+              case 'digits':
                 option.type = 'text';
                 option.pattern = item.pattern || "[0-9]{1,9}";
                 option.value = Number(Options[section][item.name])

@@ -4,11 +4,11 @@
   "name": "xdconsole",
   "short_name": "xdconsole",
   "description": "xdmachine console interface",
-  "version": "0.0.0.4",
+  "version": "0.0.0.5",
   "options_page": "options.html",
 
   "background": {
-    "scripts": ["js/jquery.min.js","js/crawler_loader.js","js/background.js"],
+    "scripts": ["js/jquery.min.js","js/console.js","js/crawler_loader.js","js/background.js"],
     "persistent": true
   },
 
