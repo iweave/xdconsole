@@ -3,3 +3,5 @@ abandoned - stop crawler initiated manually or on shutdown(?)
 
 
 unclean shutdown leaves console in old state rather than offline
+
+fire non-module stats updates directly, only add console log to queue if in debug or can bypass the log parser

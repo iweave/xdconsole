@@ -26,6 +26,20 @@
               margin-left:1px; float:left; 
               width: 100%; text-align: center;
           }
+@-webkit-keyframes status-update-background {
+  0% {
+    background-color:rgb(0,250,255); } 
+
+  100% {
+    background-color:rgb(0,50,255); } }
+
+
+.status-update {
+  background-color:rgb(0,50,255);
+  -webkit-animation: status-update-background 2s;
+  -moz-animation: status-update-background 2s;
+  -ms-animation: status-update-background 2s; }
+
 	</style>
         <script src="js/jquery.min.js"></script>
         <script src="js/popup.js"></script>
