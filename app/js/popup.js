@@ -28,7 +28,21 @@ _gaq.push(['_trackPageview']);
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
 
+var _paq = _paq || [];
+_paq.push(['trackPageView']);
+_paq.push(['enableLinkTracking']);
+
+(function() {
+  var u="https://stats.xd7.org/";
+  _paq.push(['setTrackerUrl', u+'piwik.php']);
+  _paq.push(['setSiteId', 4]);
+  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+  g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+})();
+
+
 function trackButtonClick(e) {
+    _paq.push(['trackEvent', e.target.id, 'clicked']);
     _gaq.push(['_trackEvent', e.target.id, 'clicked']);
   };
 

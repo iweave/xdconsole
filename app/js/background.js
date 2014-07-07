@@ -174,6 +174,7 @@ function updateModuleStats(targets) {
 
 function start_module() {
 if (moduleStatus=='running'||crawler.getActive==true) {updateModuleStatus('running'); return true;};
+_paq.push(['trackEvent','Engine','Start','Datafiniti']);
 updateModuleStatus('starting');
 
 // start loading the crawler
@@ -184,6 +185,7 @@ chrome.browserAction.setBadgeText({text: "="});
 }
 
 function stop_module() {
+_paq.push(['trackEvent','Engine','Stop','Datafiniti']);
 updateModuleStatus('stopping');
 // Clear timers
 //clearInterval(checkCrawlerUpdateInterval);
@@ -210,6 +212,17 @@ if (sendAnalytics==true) {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = 'https://ssl.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://stats.xd7.org/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 4]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+    g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
   })();
 }
 
@@ -256,6 +269,7 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
       chrome.storage.local.set({
         'stats': Stats
       });
+      _paq.push(['trackEvent','Engine','Version',8]);
     } else {
         Stats = stats.stats;
     }

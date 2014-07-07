@@ -4,7 +4,7 @@
   "name": "xdconsole",
   "short_name": "xdconsole",
   "description": "xdmachine console interface",
-  "version": "0.0.0.7",
+  "version": "0.0.0.8",
   "options_page": "options.html",
 
   "background": {
@@ -36,5 +36,5 @@
     "default_popup": "popup.html"
   },
 
-  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://s3.amazonaws.com; object-src 'self'"
+  "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://s3.amazonaws.com https://stats.xd7.org; object-src 'self'"
 }
